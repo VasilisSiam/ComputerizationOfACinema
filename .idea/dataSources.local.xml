@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="IU-222.4345.14">
+    <data-source name="postgres@dblabs.iee.ihu.gr" uuid="73f3f244-8c3b-4793-8e9f-fc11b3f488d4">
+      <database-info product="PostgreSQL" version="9.1.24lts2" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.5.0" dbms="POSTGRES" exact-version="9.1.24">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>it185280</user-name>
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>

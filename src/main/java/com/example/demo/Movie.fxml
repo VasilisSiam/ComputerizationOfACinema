@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="646.0" prefWidth="1002.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.MovieController">
+    <children>
+        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="970.0" AnchorPane.leftAnchor="0.0">
+            <center>
+                <VBox prefHeight="642.0" prefWidth="672.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <AnchorPane prefHeight="290.0" prefWidth="586.0">
+                            <children>
+                                <TableView fx:id="MovieView" layoutX="29.0" layoutY="39.0" prefHeight="275.0" prefWidth="631.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="-25.0" AnchorPane.topAnchor="39.0">
+                                    <columns>
+                                        <TableColumn fx:id="idColumn" prefWidth="63.0" text="ID" />
+                                        <TableColumn fx:id="TitleColumn" prefWidth="192.0" text="Title" />
+                                        <TableColumn fx:id="ProductionColumn" prefWidth="109.0" text="Production" />
+                                        <TableColumn fx:id="DateColumn" prefWidth="113.0" text="Date " />
+                                        <TableColumn fx:id="CritiqueColumn" minWidth="0.0" prefWidth="152.0" text="Critique" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
+                        <Text fx:id="insertError" fill="#1dff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="447.13671875">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Text>
+                        <Text fx:id="deleteError" fill="#1dff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="402.73681640625">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="45.0" top="20.0" />
+                            </VBox.margin>
+                        </Text>
+                        <AnchorPane prefHeight="298.0" prefWidth="685.0">
+                            <children>
+                                <Button fx:id="deleteButton" alignment="CENTER_RIGHT" layoutX="504.0" layoutY="246.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="88.0" style="-fx-background-color: #9C2B27;" text="Delete" textFill="WHITE">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Button>
+                                <TextField fx:id="idColumnInput" layoutX="370.0" layoutY="15.0" prefHeight="30.0" prefWidth="210.0" promptText="ID" />
+                                <TextField fx:id="TitleColumnInput" layoutX="371.0" layoutY="58.0" prefHeight="30.0" prefWidth="210.0" promptText="Title" />
+                                <Button fx:id="insertButton" alignment="CENTER_RIGHT" layoutX="376.0" layoutY="246.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #9C2B27;" text="Add Data" textFill="WHITE">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Button>
+                                <TextField fx:id="DateColumnInput" layoutX="370.0" layoutY="140.0" prefHeight="30.0" prefWidth="210.0" promptText="Date" />
+                                <Label fx:id="selectedFilter" layoutX="382.0" layoutY="248.0" prefHeight="29.0" prefWidth="17.0" text="+" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="24.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="ProductionColumnInput" layoutX="370.0" layoutY="99.0" prefHeight="30.0" prefWidth="210.0" promptText="Production" />
+                                <TextField fx:id="CritiqueColumnInput" layoutX="368.0" layoutY="180.0" prefHeight="31.0" prefWidth="212.0" promptText="Critique" />
+                        <RadioButton fx:id="Greek" layoutX="27.0" layoutY="22.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="104.0" text="Greek" />
+                        <RadioButton fx:id="Usa" layoutX="28.0" layoutY="65.0" mnemonicParsing="false" text="Usa" />
+                        <RadioButton fx:id="Foreign" layoutX="27.0" layoutY="91.0" mnemonicParsing="false" text="Foreign" />
+                        <RadioButton fx:id="NoFilter" layoutX="26.0" layoutY="121.0" mnemonicParsing="false" text="No Filter" />
+                        <Label layoutX="6.0" layoutY="156.0" prefHeight="29.0" prefWidth="99.0" />
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+            </center>
+            <left>
+                <VBox prefHeight="600.0" prefWidth="335.0" style="-fx-background-color: #9C2B27;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Pane prefHeight="695.0" prefWidth="335.0">
+                            <children>
+                                <Label layoutX="62.0" layoutY="99.0" text="Paramount Pictures" textFill="#d0cccc">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="119.0" layoutY="162.0" prefHeight="61.0" prefWidth="135.0" text="Movie" textAlignment="CENTER" textFill="#d0cccc">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="goBackButton" alignment="CENTER_RIGHT" layoutX="17.0" layoutY="569.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="96.0" style="-fx-background-color: #800000;" text="Back" textFill="WHITE">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Button>
+                                <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="24.0" layoutY="579.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/back.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fitHeight="158.0" fitWidth="261.0" layoutX="52.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/Paramount_Global.svg.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                    </children>
+                </VBox>
+
+            </left>
+        </BorderPane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,182 @@
+Drop table if exists movie;
+Drop table if exists actor;
+Drop table if exists music;
+Drop table if exists director;
+Drop table if exists upcoming;
+Drop table if exists log_mo;
+
+Select * From movie;
+Select * From actor;
+Select * From music;
+Select * From director;
+Select * From upcoming;
+Select * from log_mo;
+
+Create Table movie(m_id integer not null primary key,movie_title varchar(50) ,paragogi varchar(50),releaseDate integer,critue varchar(50),CONSTRAINT PR_releaseDate UNIQUE (releaseDate),CONSTRAINT PR_movie_title UNIQUE (movie_title));
+Create Table actor(a_id integer not null primary key,actor_name varchar(50),gender varchar(50),age integer,movie_title varchar(50),constraint PK_actor_par FOREIGN KEY (movie_title) REFERENCES movie(movie_title));
+Create Table music(mu_id integer not null primary key,music_title varchar(50),movie_title varchar(50),composer varchar(50),constraint PK_music_par FOREIGN KEY (movie_title) REFERENCES movie(movie_title));
+Create Table director(d_id integer not null primary key,dir_name varchar(50),movie_title varchar(50),dir_age integer,constraint PK_dir_par FOREIGN KEY (movie_title) REFERENCES movie(movie_title));
+Create Table upcoming(u_id integer not null primary key,upcoming_title varchar(50),releaseDate integer,paragogi varchar(50),constraint PK_up_release FOREIGN KEY (releaseDate) REFERENCES movie(releaseDate));
+
+Insert Into movie Values
+(1,'The Godfather','Paramount Pictures',1972,'9.2'),
+(2,'Forrest Gump','Paramount Pictures',1994,'8.8'),
+(3,'Interstellar','Paramount Pictures',2014,'8.6'),
+(4,'Gladiator','Paramount Pictures',2000,'8.5'),
+(5,'Braveheart','Paramount Pictures',1995,'8.4'),
+(6,'Spellbound','Paramount Pictures',2023,'-'),
+(7,'The Tigers Apprentice','Paramount Pictures',2024,'-'),
+(8,'Mission: Impossible - Dead Reckoning - Part One','Paramount Pictures',2022,'-');
+
+Insert Into actor Values
+(1,'Marlon Brando','Male',80,'The Godfather'),
+(2,'Tom Hanks','Male',66,'Forrest Gump'),
+(3,'Matthew McConaughey','Male',52,'Interstellar'),
+(4,'Russell Crowe','Male',58,'Gladiator'),
+(5,'Mel Gibson','Male',66,'Braveheart'),
+(6,'Rachel Zegler','Female',21,'Spellbound'),
+(7,'Michelle Yeoh','Female',60,'The Tigers Apprentice'),
+(8,'Tom Cruise','Male',60,'Mission: Impossible - Dead Reckoning - Part One');
+
+Insert Into music Values
+(1,'Main Title (The Godfather Waltz)','The Godfather','Nino Rota'),
+(2,'Hound Dog','Forrest Gump','Elvis Presley'),
+(3,'Dreaming Of The Crash','Interstellar','Hans Zimmer'),
+(4,'Progeny','Gladiator','Hans Zimmer'),
+(5,'Praise, my soul, the King of heaven','Braveheart','Henry Francis'),
+(6,'-','Spellbound','Alan Menken'),
+(7,'--','The Tigers Apprentice','-'),
+(8,'---','Mission: Impossible - Dead Reckoning - Part One','Lorne Balfe');
+
+Insert Into director Values
+(1,'Francis Ford Coppola','The Godfather',83),
+(2,'Robert Zemeckis','Forrest Gump',70),
+(3,'Christopher Nolan','Interstellar',52),
+(4,'Ridley Scott','Gladiator',84),
+(5,'Mel Gibson','Braveheart',66),
+(6,'Vicky Jenson','Spellbound',62),
+(7,'Raman Hui','The Tigers Apprentice',59),
+(8,'Christopher McQuarrie','Mission: Impossible - Dead Reckoning - Part One',53);
+
+Insert Into upcoming Values
+(1,'Spellbound',2023,'Paramount Pictures'),
+(2,'The Tigers Apprentice',2024,'Paramount Pictures'),
+(3,'Mission: Impossible - Dead Reckoning - Part One',2023,'Paramount Pictures');
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Create Or Replace Function insert_movies(integer, varchar, varchar, integer, varchar)
+Returns SETOF Movie AS $$
+	insert into movie values ($1, $2, $3, $4, $5);
+	select * from movie
+$$ Language SQL;
+
+Create Or Replace Function insert_actors(integer, varchar, varchar, integer, varchar)
+Returns SETOF Actor AS $$
+	insert into actor values ($1, $2, $3, $4, $5);
+	select * from actor
+$$ Language SQL;
+
+Create Or Replace Function insert_music(integer, varchar, varchar, varchar)
+Returns SETOF Music AS $$
+	insert into music values ($1, $2, $3, $4);
+	select * from music
+$$ Language SQL;
+
+Create Or Replace Function insert_directors(integer, varchar, varchar, integer)
+Returns SETOF Director AS $$
+	insert into director values ($1, $2, $3, $4);
+	select * from director
+$$ Language SQL;
+
+Create Or Replace Function insert_upcoming(integer, varchar, integer, varchar)
+Returns SETOF Upcoming AS $$
+	insert into upcoming values ($1, $2, $3, $4);
+	select * from upcoming
+$$ Language SQL;
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Create Or Replace Function delete_movies(integer, varchar, varchar, integer, varchar)
+Returns SETOF Movie AS $$
+	delete from movie where m_id=$1 and movie_title=$2 and paragogi=$3 and releasedate=$4 and critue=$5;
+	select * from movie
+$$ Language SQL;
+
+Create Or Replace Function delete_actors(integer, varchar, varchar, integer, varchar)
+Returns SETOF Actor AS $$
+	delete from actor where a_id=$1 and actor_name=$2 and gender=$3 and age=$4 and movie_title=$5;
+	select * from actor
+$$ Language SQL;
+
+Create Or Replace Function delete_music(integer, varchar, varchar, varchar)
+Returns SETOF Music AS $$
+	delete from music where mu_id=$1 and music_title=$2 and movie_title=$3 and composer=$4;
+	select * from music
+$$ Language SQL;
+
+Create Or Replace Function delete_directors(integer, varchar, varchar, integer)
+Returns SETOF Director AS $$
+	delete from director where d_id=$1 and dir_name=$2 and movie_title=$3 and dir_age=$4;
+	select * from director
+$$ Language SQL;
+
+Create Or Replace Function delete_upcoming(integer, varchar, integer, varchar)
+Returns SETOF Upcoming AS $$
+	delete from upcoming where u_id=$1 and upcoming_title=$2 and releasedate=$3 and paragogi=$4;
+	select * from upcoming
+$$ Language SQL;
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Create Table log_mo(
+operation char(1) NOT NULL,
+stamp timestamp NOT NULL primary key,
+userid varchar(20) NOT NULL,
+m_id integer NOT NULL,
+movie_title character varying(50) NOT NULL,
+paragogi character varying(50) NOT NULL,
+releasedate integer NOT NULL,
+critue character varying(50) NOT NULL);
+
+--------------------------------------------------------------------------------------------------------------------
+
+Create or Replace Function process_logmo()
+Returns trigger AS
+$BODY$
+BEGIN
+IF (TG_OP = 'DELETE') THEN
+INSERT INTO log_mo SELECT 'D', now(), user, OLD.*;
+Return OLD;
+elsif (TG_OP = 'UPDATE') THEN
+INSERT INTO log_mo SELECT 'U', now(), user, NEW.*;
+Return NEW;
+elsif (TG_OP = 'INSERT') THEN
+INSERT INTO log_mo SELECT 'I', now(), user, NEW.*;
+Return NEW;
+END IF;
+RETURN NULL;
+END;
+$BODY$
+LANGUAGE plpgsql
+
+------------------------------------------------------------------------------------------------------------
+
+CREATE TRIGGER
+log_mo
+AFTER INSERT OR UPDATE OR DELETE ON movie
+FOR EACH ROW EXECUTE PROCEDURE
+process_logmo();
+
+---------------------------------------------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION drop_tebles()
+Returns void AS
+$$
+Drop table if exists movie;
+Drop table if exists actor;
+Drop table if exists music;
+Drop table if exists director;
+Drop table if exists upcoming;
+$$
+LANGUAGE SQL;

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.DirectorsController">
+    <children>
+        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="970.0" AnchorPane.leftAnchor="0.0">
+            <center>
+                <VBox prefHeight="639.0" prefWidth="446.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <AnchorPane prefHeight="314.0" prefWidth="553.0">
+                            <children>
+                                <TableView fx:id="DirectorsView" layoutX="53.0" layoutY="39.0" prefHeight="267.0" prefWidth="542.0" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="39.0">
+                                    <columns>
+                                        <TableColumn fx:id="idColumn" prefWidth="63.0" text="ID" />
+                                        <TableColumn fx:id="NameTitleColumn" prefWidth="192.0" text="Name" />
+                                        <TableColumn fx:id="MovieColumn" prefWidth="171.0" text="Movie" />
+                                        <TableColumn fx:id="AgeColumn" prefWidth="115.00004882812505" text="Age" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
+                        <Text fx:id="insertError" fill="#1dff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="447.13671875">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Text>
+                        <Text fx:id="deleteError" fill="#1dff00" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="402.73681640625">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="45.0" top="20.0" />
+                            </VBox.margin>
+                        </Text>
+                        <AnchorPane prefHeight="286.0" prefWidth="545.0">
+                            <children>
+                                <Button fx:id="deleteButton" alignment="CENTER_RIGHT" layoutX="500.0" layoutY="196.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="88.0" style="-fx-background-color: #9C2B27;" text="Delete" textFill="WHITE">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Button>
+                                <TextField fx:id="idColumnInput" layoutX="407.0" layoutY="14.0" prefHeight="30.0" prefWidth="210.0" promptText="ID" />
+                                <TextField fx:id="NameColumnInput" layoutX="407.0" layoutY="57.0" prefHeight="30.0" prefWidth="210.0" promptText="Name" />
+                                <TextField fx:id="MovieColumnInput" accessibleRole="TEXT" layoutX="407.0" layoutY="99.0" prefHeight="30.0" prefWidth="210.0" promptText="Movie" />
+                                <TextField fx:id="AgeColumnInput" layoutX="407.0" layoutY="138.0" prefHeight="30.0" prefWidth="210.0" promptText="Age" />
+                                <Button fx:id="insertButton" alignment="CENTER_RIGHT" layoutX="384.0" layoutY="196.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #9C2B27;" text="Add Data" textFill="WHITE">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Button>
+
+                                <Label layoutX="390.0" layoutY="198.0" prefHeight="29.0" prefWidth="17.0" text="+" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="24.0" />
+                                    </font>
+                                </Label>
+                        <TextField fx:id="filter" layoutX="43.0" layoutY="44.0" prefHeight="31.0" prefWidth="203.0" promptText="Type an Age" />
+
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+            </center>
+            <left>
+                <VBox prefHeight="600.0" prefWidth="335.0" style="-fx-background-color: #9C2B27;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Pane prefHeight="671.0" prefWidth="335.0">
+                            <children>
+                                <Label layoutX="62.0" layoutY="99.0" text="Paramount Pictures" textFill="#d0cccc">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="110.0" layoutY="202.0" prefHeight="44.0" prefWidth="114.0" text="Directors" textFill="#d0cccc">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="goBackButton" alignment="CENTER_RIGHT" layoutX="17.0" layoutY="569.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="96.0" style="-fx-background-color: #800000;" text="Back" textFill="WHITE">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Button>
+                                <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="24.0" layoutY="579.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/back.png" />
+                                    </image>
+                                </ImageView>                                <ImageView fitHeight="158.0" fitWidth="261.0" layoutX="43.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/Paramount_Global.svg.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                    </children>
+                </VBox>
+            </left>
+        </BorderPane>
+    </children>
+</AnchorPane>

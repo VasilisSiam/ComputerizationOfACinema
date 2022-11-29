@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane fx:id="loginWindow" alignment="CENTER" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="604.0" prefWidth="859.0" vgap="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.LoginController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="379.2000244140625" minWidth="10.0" prefWidth="251.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="627.0" minWidth="10.0" prefWidth="533.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="627.0" minWidth="10.0" prefWidth="45.200000000000045" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="387.20000915527345" minHeight="10.0" prefHeight="97.60000000000004" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="387.20000915527345" minHeight="10.0" prefHeight="368.9999633789063" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="392.0000061035156" minHeight="10.0" prefHeight="101.80003662109374" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <padding>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+    </padding>
+    <children>
+    <AnchorPane prefHeight="342.0" prefWidth="275.0" style="-fx-background-color: #9C2B27;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <children>
+            <TextField fx:id="userTextField" layoutX="71.0" layoutY="118.0" prefHeight="26.0" prefWidth="362.0" promptText="Username/email" />
+            <PasswordField fx:id="passWordTextField" layoutX="71.0" layoutY="194.0" prefHeight="26.0" prefWidth="362.0" promptText="Password" />
+            <Button fx:id="authButton" layoutX="197.0" layoutY="259.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Sign in" />
+            <Label layoutX="226.0" layoutY="35.0" prefHeight="43.0" prefWidth="93.0" text="Sign In" textFill="#d0cccc">
+                <font>
+                    <Font size="20.0" />
+                </font>
+            </Label>
+            <ImageView fitHeight="43.0" fitWidth="52.0" layoutX="14.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/login.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="27.0" layoutX="23.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/password.png" />
+               </image>
+            </ImageView>
+
+        </children>
+    </AnchorPane>
+    <AnchorPane prefHeight="270.0" prefWidth="600.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <Text fx:id="outputText" fill="#ff0700" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="119.13671875" GridPane.rowIndex="2">
+        <font>
+            <Font size="18.0" />
+        </font>
+    </Text>
+      <ImageView fitHeight="259.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+        <image>
+            <Image url="@../images/Paramount_Global.svg.png" />
+        </image>
+      </ImageView>
+    </children>
+</GridPane>
