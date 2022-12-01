@@ -137,8 +137,7 @@ Returns SETOF Upcoming AS $$
 	delete from upcoming where u_id=$1 and movie_title=$2 and releasedate=$3 and paragogi=$4;
 	select * from upcoming
 $$ Language SQL;
-----------------------------------------------------------------------------------------------------------------------------------------------
-
+-----------------------------------------------------------------------------------------------------
 Create Table log_mo(
 operation char(1) NOT NULL,
 stamp timestamp NOT NULL primary key,
@@ -149,8 +148,7 @@ paragogi character varying(50) NOT NULL,
 releasedate character varying(50) NOT NULL,
 critique character varying(50) NOT NULL);
 
---------------------------------------------------------------------------------------------------------------------
-
+-----------------------------------------------------------------------------------------------------
 Create or Replace Function process_logmo()
 Returns trigger AS
 $BODY$
@@ -170,8 +168,7 @@ END;
 $BODY$
 LANGUAGE plpgsql
 
-------------------------------------------------------------------------------------------------------------
-
+-----------------------------------------------------------------------------------------------------
 CREATE TRIGGER
 log_mo
 AFTER INSERT OR UPDATE OR DELETE ON movie
@@ -316,11 +313,11 @@ $BODY$
 
 ------------------------------------
 
-  CREATE OR REPLACE FUNCTION filterupcoming(character varying)
-  RETURNS SETOF upcoming AS
+  CREATE OR REPLACE FUNCTION filterdirector(character varying)
+  RETURNS SETOF director AS
 $BODY$
-Select * from upcoming 
-where paragogi=$1;
+Select * from director 
+where dir_age=$1;
 $BODY$
   LANGUAGE sql VOLATILE
   
