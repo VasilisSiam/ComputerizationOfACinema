@@ -1,4 +1,2 @@
-# ParamountFinal2
-Katevazete thn efarmogi apo to github 
-to trexetai se intellij i se netbeans me Jdk17 
-gia to login tis efarmogis to username einai:Vasilis kai to passwd:Vasilis
+
+This is a Java desktop app which the admin user of a cinema can add in the database the movies,the actors,the directors,and the upcoming Movies of his cinema.Also he can display every movie and etc in the app.
